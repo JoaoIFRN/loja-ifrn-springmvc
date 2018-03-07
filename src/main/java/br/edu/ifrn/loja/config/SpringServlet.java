@@ -21,7 +21,7 @@ public class SpringServlet extends
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{SpringConfigMVC.class};
+        return new Class[]{SpringConfigMVC.class,SpringConfigJPA.class};
     }
 
     @Override
