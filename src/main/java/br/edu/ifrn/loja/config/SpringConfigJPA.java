@@ -11,7 +11,9 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -45,9 +47,18 @@ public class SpringConfigJPA {
                 = new LocalContainerEntityManagerFactoryBean();
         lc.setDataSource(ds);
         lc.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        lc.setPackagesToScan("br.edu.ifrn.loja.model");
+        lc.setPackagesToScan("br.edu.ifrn.loja.model","br.edu.ifrn.loja.dao");
         lc.setJpaProperties(properties());
+        lc.afterPropertiesSet();
         return lc.getObject();
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager(EntityManagerFactory factory) {
+        JpaTransactionManager tx = new JpaTransactionManager();
+        tx.setEntityManagerFactory(factory);
+        tx.setJpaDialect(new HibernateJpaDialect());
+        return tx;
     }
 
     private Properties properties() {
