@@ -4,6 +4,7 @@
     Author     : joaon
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <header>
+            <h1>Lista de produtos</h1>
+        </header>
+        <main>
+            <ul>
+                <c:forEach var="produto" items="${produtos}">
+                    <li>${produto.nome}</li>
+                </c:forEach>
+            </ul>
+        </main>
     </body>
 </html>

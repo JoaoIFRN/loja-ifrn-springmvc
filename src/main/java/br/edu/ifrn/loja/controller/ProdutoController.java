@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,8 +29,20 @@ public class ProdutoController {
     @GetMapping(path="/lista")
     public ModelAndView produtos(){
         List<Produto> produtos = produtoDAO.listar();
-        ModelAndView modelAndView = new ModelAndView("produtos/lista");
+        ModelAndView modelAndView = 
+                new ModelAndView("produtos/lista");
         modelAndView.addObject("produtos", produtos);
         return modelAndView;
     }
+    
+    @GetMapping(path="/form")
+    public String exibirForm(){
+        return "produtos/form";
+    }
+    
+    @PostMapping 
+    public String salvar(Produto produto){
+        produtoDAO.salvar(produto);
+        return "produtos/ok";
+    } 
 }

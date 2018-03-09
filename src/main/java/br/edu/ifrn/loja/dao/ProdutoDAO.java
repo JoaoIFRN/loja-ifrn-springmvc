@@ -29,12 +29,8 @@ public class ProdutoDAO {
         TypedQuery<Produto> query = entityManager.createQuery("from Produto", Produto.class);
         return query.getResultList();
     }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    
+    public void salvar(Produto produto){
+        entityManager.persist(produto);
     }
 }

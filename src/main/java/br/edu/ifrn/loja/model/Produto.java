@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "produto_seq")
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
 

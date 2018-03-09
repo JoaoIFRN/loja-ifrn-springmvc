@@ -32,12 +32,13 @@ public class SpringConfigJPA {
         ds.setUrl("jdbc:postgresql://localhost:5432/loja-ifrn");
         ds.setUsername("postgres");
         ds.setPassword("scada2005");
+        
         /*
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/loja-ifrn");
         ds.setUsername("root");
-        ds.setPassword("");
-        */
+        ds.setPassword("");*/
+        
         return ds;
     }
 

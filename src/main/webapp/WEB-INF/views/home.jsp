@@ -13,5 +13,11 @@
     </head>
     <body>
         <h1>Home</h1>
+        <nav>
+            <ul>
+                <li><a href="produtos/lista">Lista de produtos</a></li>
+                <li><a href="produtos/form">Cadastrar produtos</a></li>   
+            </ul>
+        </nav>
     </body>
 </html>
