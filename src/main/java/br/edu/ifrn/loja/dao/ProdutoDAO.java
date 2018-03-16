@@ -30,7 +30,19 @@ public class ProdutoDAO {
         return query.getResultList();
     }
     
+    public Produto buscarProduto(Integer id){
+        return entityManager.find(Produto.class, id);
+    }
+    
     public void salvar(Produto produto){
-        entityManager.persist(produto);
+        if (produto.getId() == null)
+            entityManager.persist(produto);
+        else
+            entityManager.merge(produto);
+    }
+    
+    public void excluir(Integer id){
+        Produto produto = entityManager.find(Produto.class, id);
+        entityManager.remove(produto);
     }
 }

@@ -21,14 +21,14 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "produto_seq")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nome;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,7 +38,11 @@ public class Produto {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }    
+
+    @Override
+    public String toString() {
+        return "Produto{" + "id=" + id + ", nome=" + nome + '}';
     }
-    
-    
+
 }

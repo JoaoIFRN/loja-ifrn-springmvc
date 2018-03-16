@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,15 +14,34 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <spring:url var="path_excluir" value="/produtos/excluir"/>
+        <spring:url var="path_atualizar" value="/produtos/atualizar"/>   
+        <spring:url var="path_form" value="/produtos/form"/>  
         <header>
             <h1>Lista de produtos</h1>
+            <hr/>
+            <h2>${mensagem}</h2>
+            <a href="${path_form}">Novo produto</a>
+            <hr/>
         </header>
         <main>
-            <ul>
-                <c:forEach var="produto" items="${produtos}">
-                    <li>${produto.nome}</li>
-                </c:forEach>
-            </ul>
+
+            <table>
+                <thead>
+                <th>Id</th>
+                <th>Nomes</th>
+                <th>Ações</th>
+                </thead>
+                <tbody>
+                    <c:forEach var="produto" items="${produtos}">
+                        <tr>   
+                            <td>${produto.id}</td>
+                            <td>${produto.nome}</td>
+                            <td><a href="${path_atualizar}/${produto.id}">Editar</a>&nbsp;&nbsp;<a href="${path_excluir}/${produto.id}">Excluir</a></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </main>
     </body>
 </html>
