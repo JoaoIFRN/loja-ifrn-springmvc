@@ -5,6 +5,8 @@
  */
 package br.edu.ifrn.loja.model;
 
+import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,13 +18,16 @@ import javax.persistence.SequenceGenerator;
  * @author joaon
  */
 @Entity
-//@SequenceGenerator(name = "produto_seq",sequenceName = "produto_seq")
-public class Produto {
+//@SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", initialValue = 1, allocationSize = 1)
+public class Usuario {
+    
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "produto_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "usuario_seq")
     private Integer id;
+    @Column(nullable = false)
     private String nome;
+    private String senha;
 
     public Integer getId() {
         return id;
@@ -38,11 +43,14 @@ public class Produto {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }    
-
-    @Override
-    public String toString() {
-        return "Produto{" + "id=" + id + ", nome=" + nome + '}';
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
 }

@@ -61,7 +61,7 @@ public class ProdutoController {
     }
     
     @GetMapping(path="/atualizar/{id}")
-    public ModelAndView preAtualizar(@PathVariable("id") int id){     
+    public ModelAndView preAtualizar(@PathVariable("id") Integer id){     
         Produto produto = produtoDAO.buscarProduto(id);
         return new ModelAndView("/produtos/form","produto",produto);
     }

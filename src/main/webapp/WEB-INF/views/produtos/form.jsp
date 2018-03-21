@@ -25,7 +25,7 @@
             <label for="nome">Nome</label>
             <form:input type="text" path="nome"/>
             <c:if test = "${produto.id != null}">
-                <input type="submit" value="atualizar"/>
+                <input type="submit" value="Atualizar"/>
             </c:if>
             <c:if test = "${produto.id == null}">
                 <input type="submit" value="Cadastrar"/>
