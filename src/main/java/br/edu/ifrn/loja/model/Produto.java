@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import org.hibernate.validator.constraints.NotBlank;
+
 
 /**
  *
@@ -22,6 +24,7 @@ public class Produto {
     //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "produto_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank(message = "Nome não pode ser vazio")  
     private String nome;
 
     public Integer getId() {

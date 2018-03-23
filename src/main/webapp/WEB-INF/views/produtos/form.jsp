@@ -22,8 +22,11 @@
         <spring:url var="path_salvar" value="/produtos"/>
         <form:form action="${path_salvar}" method="post" modelAttribute="produto">
             <form:input type="hidden" path="id"/>
-            <label for="nome">Nome</label>
-            <form:input type="text" path="nome"/>
+            <div>
+                <label for="nome">Nome</label>
+                <form:input type="text" path="nome"/><br/>
+                <form:errors path="nome" cssStyle="color: red"/>
+            </div>
             <c:if test = "${produto.id != null}">
                 <input type="submit" value="Atualizar"/>
             </c:if>

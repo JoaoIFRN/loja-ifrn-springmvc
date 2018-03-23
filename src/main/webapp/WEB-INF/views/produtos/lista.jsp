@@ -28,9 +28,9 @@
 
             <table>
                 <thead>
-                <th>Id</th>
-                <th>Nomes</th>
-                <th>Ações</th>
+                    <th>Id</th>
+                    <th>Nomes</th>
+                    <th>Ações</th>
                 </thead>
                 <tbody>
                     <c:forEach var="produto" items="${produtos}">
