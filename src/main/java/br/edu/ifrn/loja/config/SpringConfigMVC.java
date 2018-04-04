@@ -7,6 +7,8 @@ package br.edu.ifrn.loja.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -15,13 +17,29 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 public class SpringConfigMVC {
-    
+
     @Bean
-    public InternalResourceViewResolver internalResourceViewResolver(){
+    public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver in = new InternalResourceViewResolver();
         in.setPrefix("/WEB-INF/views/");
         in.setSuffix(".jsp");
         return in;
     }
+    
+    @Bean
+    public MultipartResolver multipartResolver(){
+        return new StandardServletMultipartResolver();
+    }
+    
+    /*
+    @Bean
+    public FormattingConversionService mvcConversionService() {
+        DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+        DateFormatterRegistrar registrar = new DateFormatterRegistrar();
+        registrar.setFormatter(new DateFormatter("dd/MM/yyyy"));
+        registrar.registerFormatters(conversionService);
+        return conversionService;
+    }
+    */
     
 }

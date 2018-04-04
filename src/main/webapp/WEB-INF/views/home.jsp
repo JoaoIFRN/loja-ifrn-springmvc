@@ -16,7 +16,8 @@
         <nav>
             <ul>
                 <li><a href="produtos/lista">Lista de produtos</a></li>
-                <li><a href="produtos/form">Cadastrar produtos</a></li>   
+                <li><a href="produtos/form">Cadastrar produtos</a></li> 
+                <li><a href="usuarios/lista">Lista de usuários</a></li> 
             </ul>
         </nav>
     </body>

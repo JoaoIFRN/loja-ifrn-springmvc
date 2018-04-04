@@ -27,14 +27,7 @@ public class SpringConfigJPA {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        /*
-        ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://localhost:5432/loja-ifrn");
-        ds.setUsername("postgres");
-        ds.setPassword("scada2005");
-        */        
-        
+        DriverManagerDataSource ds = new DriverManagerDataSource();       
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/loja-ifrn");
         ds.setUsername("root");

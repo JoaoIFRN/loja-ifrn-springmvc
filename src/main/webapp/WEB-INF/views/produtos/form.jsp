@@ -20,12 +20,26 @@
         <h2>${mensagem}</h2>
         <hr/>
         <spring:url var="path_salvar" value="/produtos"/>
-        <form:form action="${path_salvar}" method="post" modelAttribute="produto">
+        <form:form action="${path_salvar}" method="post" modelAttribute="produto" enctype="multipart/form-data">
             <form:input type="hidden" path="id"/>
             <div>
                 <label for="nome">Nome</label>
                 <form:input type="text" path="nome"/><br/>
                 <form:errors path="nome" cssStyle="color: red"/>
+            </div>
+            <div>
+                <label for="nome">Data de fabricação</label>
+                <form:input type="text" path="dataFabricacao"/><br/>
+                <form:errors path="dataFabricacao" cssStyle="color: red"/>
+            </div>
+            <div>
+                <label for="preco">Preço</label>
+                <form:input type="text" path="preco"/><br/>
+                <form:errors path="preco" cssStyle="color: red"/>
+            </div>
+            <div>
+                <label for="foto">Foto</label>
+                <input type="file" name="foto"/><br/>                
             </div>
             <c:if test = "${produto.id != null}">
                 <input type="submit" value="Atualizar"/>

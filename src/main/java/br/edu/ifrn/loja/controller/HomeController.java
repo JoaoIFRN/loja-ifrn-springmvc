@@ -8,10 +8,6 @@ package br.edu.ifrn.loja.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- *
- * @author joaon
- */
 @Controller
 public class HomeController {
     

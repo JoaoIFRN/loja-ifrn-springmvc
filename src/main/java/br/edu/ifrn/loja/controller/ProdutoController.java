@@ -7,6 +7,9 @@ package br.edu.ifrn.loja.controller;
 
 import br.edu.ifrn.loja.dao.ProdutoDAO;
 import br.edu.ifrn.loja.model.Produto;
+import br.edu.ifrn.loja.utilidades.FileSaver;
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,6 +34,9 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoDAO produtoDAO;
+    
+    @Autowired
+    private FileSaver fileSaver;
 
     @GetMapping(path = "/lista")
     public ModelAndView produtos() {
@@ -40,16 +47,21 @@ public class ProdutoController {
     }
 
     @GetMapping(path = "/form")
-    public ModelAndView exibirForm() {
-        return new ModelAndView("/produtos/form", "produto", new Produto());
+    public String exibirForm(Produto produto) {                
+        return "/produtos/form";
     }
 
     @PostMapping
-    public String salvar(@Valid @ModelAttribute("produto") Produto produto, BindingResult bind, RedirectAttributes redirectAttributes) {
+    public String salvar(MultipartFile foto, @Valid @ModelAttribute("produto") Produto produto, BindingResult bind, RedirectAttributes redirectAttributes) throws IOException {
 
+        System.out.println(foto.getOriginalFilename());
+        
         if (bind.hasErrors()) {
             return "/produtos/form";
         }
+        
+        String path = fileSaver.write("arquivos-foto", foto);
+        produto.setFotoPath(path);
 
         boolean atualizar = produto.getId() == null ? false : true;
         produtoDAO.salvar(produto);

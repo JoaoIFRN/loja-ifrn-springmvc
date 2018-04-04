@@ -31,4 +31,11 @@ public class UsuarioDAO {
         return query.getResultList();
     }
     
+    public void salvar(Usuario usuario){
+        if (usuario.getId() == null)
+            entityManager.persist(usuario);
+        else
+            entityManager.merge(usuario);
+    }
+    
 }

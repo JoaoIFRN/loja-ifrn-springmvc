@@ -4,8 +4,10 @@
     Author     : joaon
 --%>
 
+<%@page import="java.text.DateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,17 +30,23 @@
 
             <table>
                 <thead>
-                    <th>Id</th>
-                    <th>Nomes</th>
-                    <th>Ações</th>
+                <th>Id</th>
+                <th>Nomes</th>
+                <th>Data de fabricação</th>
+                <th>Preço</th>
+                <th>Arquivo foto</th>
+                <th>Ações</th>
                 </thead>
                 <tbody>
                     <c:forEach var="produto" items="${produtos}">
                         <tr>   
                             <td>${produto.id}</td>
                             <td>${produto.nome}</td>
+                            <td><fmt:formatDate value="${produto.dataFabricacao.time}" pattern="dd/MM/yyyy"/> </td>
+                            <td> <fmt:formatNumber value = "${produto.preco}" type = "currency"/> </td> 
+                            <td>${produto.fotoPath}</td>
                             <td><a href="${path_atualizar}/${produto.id}">Editar</a>&nbsp;&nbsp;<a href="${path_excluir}/${produto.id}">Excluir</a></td>
-                        </tr>
+                    </tr>
                     </c:forEach>
                 </tbody>
             </table>

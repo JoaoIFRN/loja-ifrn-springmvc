@@ -5,12 +5,15 @@
  */
 package br.edu.ifrn.loja.model;
 
+import java.math.BigDecimal;
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 
 /**
@@ -18,14 +21,20 @@ import org.hibernate.validator.constraints.NotBlank;
  * @author joaon
  */
 @Entity
-//@SequenceGenerator(name = "produto_seq",sequenceName = "produto_seq")
 public class Produto {
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "produto_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
     @NotBlank(message = "Nome não pode ser vazio")  
     private String nome;
+    
+    private BigDecimal preco;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Calendar dataFabricacao;
+    
+    public String fotoPath;
 
     public Integer getId() {
         return id;
@@ -42,6 +51,30 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }    
+
+    public Calendar getDataFabricacao() {
+        return dataFabricacao;
+    }
+
+    public void setDataFabricacao(Calendar dataFabricacao) {
+        this.dataFabricacao = dataFabricacao;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public String getFotoPath() {
+        return fotoPath;
+    }
+
+    public void setFotoPath(String fotoPath) {
+        this.fotoPath = fotoPath;
+    }
 
     @Override
     public String toString() {
