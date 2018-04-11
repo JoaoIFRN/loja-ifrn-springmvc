@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
+
 
 
 /**
@@ -28,10 +28,10 @@ public class Produto {
     
     @NotBlank(message = "Nome não pode ser vazio")  
     private String nome;
-    
+        
     private BigDecimal preco;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")    
     private Calendar dataFabricacao;
     
     public String fotoPath;

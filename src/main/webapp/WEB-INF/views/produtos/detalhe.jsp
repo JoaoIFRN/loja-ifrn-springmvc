@@ -1,6 +1,6 @@
 <%-- 
-    Document   : erros
-    Created on : 23/03/2018, 10:10:13
+    Document   : detalhe
+    Created on : 06/04/2018, 09:07:23
     Author     : joaon
 --%>
 
@@ -14,6 +14,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Erros</h1>
+        <h1>Detalhes do produto - ${produto.nome}</h1>
     </body>
 </html>

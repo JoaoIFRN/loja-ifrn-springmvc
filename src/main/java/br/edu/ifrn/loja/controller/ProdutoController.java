@@ -9,7 +9,6 @@ import br.edu.ifrn.loja.dao.ProdutoDAO;
 import br.edu.ifrn.loja.model.Produto;
 import br.edu.ifrn.loja.utilidades.FileSaver;
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +53,7 @@ public class ProdutoController {
     @PostMapping
     public String salvar(MultipartFile foto, @Valid @ModelAttribute("produto") Produto produto, BindingResult bind, RedirectAttributes redirectAttributes) throws IOException {
 
-        System.out.println(foto.getOriginalFilename());
+        //System.out.println(foto.getOriginalFilename());
         
         if (bind.hasErrors()) {
             return "/produtos/form";
@@ -84,5 +83,11 @@ public class ProdutoController {
     public ModelAndView preAtualizar(@PathVariable("id") Integer id) {
         Produto produto = produtoDAO.buscarProduto(id);
         return new ModelAndView("/produtos/form", "produto", produto);
+    }
+    
+    @GetMapping(path = "/detalhe/{id}")
+    public ModelAndView detalhe(@PathVariable("id") Integer id) {
+        Produto produto = produtoDAO.buscarProduto(id);
+        return new ModelAndView("/produtos/detalhe", "produto", produto);
     }
 }

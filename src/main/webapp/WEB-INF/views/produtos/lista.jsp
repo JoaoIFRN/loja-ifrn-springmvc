@@ -12,6 +12,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <spring:url value="/static/bootstrap/css/bootstrap.css" var="bootstrap"/>
+        <link href="${bootstrap}" rel="stylesheet"  type="text/css" />  
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -41,8 +43,15 @@
                     <c:forEach var="produto" items="${produtos}">
                         <tr>   
                             <td>${produto.id}</td>
-                            <td>${produto.nome}</td>
+                            <td>
+                                ${produto.nome} 
+                                <a href="${spring:mvcUrl('PC#detalhe').arg(0,produto.id).build()}">
+                                    ${produto.id}
+                                </a>
+                            </td>
+                            
                             <td><fmt:formatDate value="${produto.dataFabricacao.time}" pattern="dd/MM/yyyy"/> </td>
+                            
                             <td> <fmt:formatNumber value = "${produto.preco}" type = "currency"/> </td> 
                             <td>${produto.fotoPath}</td>
                             <td><a href="${path_atualizar}/${produto.id}">Editar</a>&nbsp;&nbsp;<a href="${path_excluir}/${produto.id}">Excluir</a></td>

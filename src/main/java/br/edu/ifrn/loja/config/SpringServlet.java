@@ -40,6 +40,7 @@ public class SpringServlet extends
         return new Filter[] {characterEncodingFilter}; 
     }     
 
+    //Configuração utilizada no upload de arquivos
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
         registration.setMultipartConfig(new MultipartConfigElement(""));
