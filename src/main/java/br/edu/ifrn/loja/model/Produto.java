@@ -7,6 +7,7 @@ package br.edu.ifrn.loja.model;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Produto {
     
     @NotBlank(message = "Nome não pode ser vazio")  
     private String nome;
-        
+            
     private BigDecimal preco;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")    
@@ -80,5 +81,32 @@ public class Produto {
     public String toString() {
         return "Produto{" + "id=" + id + ", nome=" + nome + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produto other = (Produto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

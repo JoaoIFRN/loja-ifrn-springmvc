@@ -12,10 +12,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <spring:url value="/static/bootstrap/css/bootstrap.css" var="bootstrap"/>
         <link href="${bootstrap}" rel="stylesheet"  type="text/css" />  
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -32,7 +32,7 @@
                 <form:errors path="nome" cssStyle="color: red"/>
             </div >
             <div class="form-group">
-                <label for="nome">Data de fabricação</label><br/>
+                <label>Data de fabricação</label><br/>
                 <form:input type="text" path="dataFabricacao"/><br/>
                 <form:errors path="dataFabricacao" cssStyle="color: red"/>
             </div>

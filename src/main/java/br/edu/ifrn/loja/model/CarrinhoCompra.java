@@ -5,8 +5,9 @@
  */
 package br.edu.ifrn.loja.model;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
@@ -16,21 +17,17 @@ import org.springframework.web.context.WebApplicationContext;
  * @author joaon
  */
 @Component
-//@Scope(value = WebApplicationContext.SCOPE_SESSION)
+@Scope(value = WebApplicationContext.SCOPE_SESSION)
 public class CarrinhoCompra {
     
-    private List<ItemCarrinho> itens = new ArrayList();
+    private Map<Integer,ItemCarrinho> itens = new LinkedHashMap<Integer,ItemCarrinho>();
 
     public void adicionarItem(ItemCarrinho item){
-        itens.add(item);
+        itens.put(item.getProduto().getId(),item);
     }
     
     public List<ItemCarrinho> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<ItemCarrinho> itens) {
-        this.itens = itens;
-    }            
+        return (List<ItemCarrinho>) itens.values();
+    }    
         
 }
