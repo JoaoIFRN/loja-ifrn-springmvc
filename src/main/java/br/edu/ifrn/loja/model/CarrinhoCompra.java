@@ -5,6 +5,7 @@
  */
 package br.edu.ifrn.loja.model;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,14 +21,15 @@ import org.springframework.web.context.WebApplicationContext;
 @Scope(value = WebApplicationContext.SCOPE_SESSION)
 public class CarrinhoCompra {
     
-    private Map<Integer,ItemCarrinho> itens = new LinkedHashMap<Integer,ItemCarrinho>();
+    private Map<Integer,ItemCarrinho> itens = 
+            new LinkedHashMap<Integer,ItemCarrinho>();
 
     public void adicionarItem(ItemCarrinho item){
         itens.put(item.getProduto().getId(),item);
     }
     
-    public List<ItemCarrinho> getItens() {
-        return (List<ItemCarrinho>) itens.values();
+    public Collection<ItemCarrinho> getItens() {
+        return itens.values();
     }    
         
 }

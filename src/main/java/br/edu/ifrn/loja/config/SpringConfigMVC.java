@@ -29,11 +29,9 @@ public class SpringConfigMVC extends WebMvcConfigurerAdapter {
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver in = new InternalResourceViewResolver();
         in.setPrefix("/WEB-INF/views/");
-        in.setSuffix(".jsp");
-        
+        in.setSuffix(".jsp");        
         //in.setExposeContextBeansAsAttributes(true);
-        //in.setExposedContextBeanNames("carrinhoCompras");
-        
+        in.setExposedContextBeanNames("carrinhoCompra");        
         return in;
     }
     
@@ -44,6 +42,7 @@ public class SpringConfigMVC extends WebMvcConfigurerAdapter {
     }
     
     /*
+    //Formatação de datas
     @Bean
     public FormattingConversionService mvcConversionService() {
         DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();

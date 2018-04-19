@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,5 +16,6 @@
     </head>
     <body>
         <h1>Detalhes do produto - ${produto.nome}</h1>
+        <a href='${spring:mvcUrl("CC#adicionarItem").arg(0,produto.id).build()}'>Comprar</a>
     </body>
 </html>

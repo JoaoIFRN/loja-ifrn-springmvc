@@ -49,6 +49,14 @@
             </div>
         </nav>
 
+        <c:if test="${produtos.isEmpty()}">
+            <h1>Lista de produtos vazia</h1>
+        </c:if>
+            
+        <c:if test="${not empty carrinhoCompra}">
+            <h1>Números de itens do carrinho: <c:out value="${carrinhoCompra.itens.size()}"/></h1>
+        </c:if>            
+
         <main role="main" class="container">
             <div class="jumbotron">
                 <h1>Lista de produtos</h1>
